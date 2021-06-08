@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Redis.dao.StorageDao">
+
+    <resultMap id="BaseResultMap" type="com.Redis.entity.Storage">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="productId" property="productId" jdbcType="VARCHAR"/>
+        <result column="storage" property="storage" jdbcType="INTEGER"/>
+        <result column="used" property="used" jdbcType="INTEGER"/>
+        <result column="rest" property="rest" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <update id="update" parameterType="com.Redis.entity.Storage">
+        update sk_storage
+        set used=used+#{used},rest=rest-#{used}
+        where productId=#{productId};
+    </update>
+
+</mapper>
