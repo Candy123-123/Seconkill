@@ -1,8 +1,3 @@
-# Seconkill
-最终整体逻辑
-![image](https://user-images.githubusercontent.com/57355730/121180060-fff5a080-c892-11eb-88f7-984862f4c084.png)
-
-
 ## 项目运行步骤
 
 版本1忽略，记得把redis打开即可

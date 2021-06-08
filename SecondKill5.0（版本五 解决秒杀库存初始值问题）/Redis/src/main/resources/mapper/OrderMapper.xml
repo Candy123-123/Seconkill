@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Redis.dao.OrderDao">
+
+    <resultMap id="BaseResultMap" type="com.Redis.entity.Order">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="userId" property="userId" jdbcType="VARCHAR"/>
+        <result column="productId" property="productId" jdbcType="INTEGER"/>
+        <result column="count" property="count" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <insert id="add" parameterType="Order">
+        insert into sk_order (userId,productId,count,status)
+        values (#{userId},#{productId},#{count},#{status});
+    </insert>
+
+    <select id="successinfo" resultType="com.Redis.entity.Order">
+        select id,userId,productId,count,status
+        from sk_order
+        where status=1;
+    </select>
+
+    <select id="failureinfo" resultType="com.Redis.entity.Order">
+        select id,userId,productId,count,status
+        from sk_order
+        where status=0;
+    </select>
+
+
+</mapper>
